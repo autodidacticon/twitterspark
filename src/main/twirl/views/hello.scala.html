@@ -1,0 +1,46 @@
+@(rows: Seq[io.moorhead.toptags.service.Tag])
+<html>
+<head>
+    <style>
+# {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#hashtags td, #hashtags th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#hashtags tr:nth-child(even){background-color: #f2f2f2;}
+
+#hashtags tr:hover {background-color: #ddd;}
+
+#hashtags th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: white;
+}
+
+    </style>
+    <title>Top Trump Tags</title>
+</head>
+<body>
+<h1>Top Hashtags used in realdonaldtrump mentions</h1>
+<table id="hashtags">
+    <tr>
+        <th>hashtag</th>
+        <th>count</th>
+    </tr>
+    @for(row <- rows) {
+    <tr>
+        <td>@row.tag</td>
+        <td>@row.count</td>
+    </tr>
+    }
+</table>
+</body>
+</html>

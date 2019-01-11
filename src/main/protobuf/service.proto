@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "io.moorhead.toptags";
+option java_outer_classname = "TopTagsName";
+
+package toptags;
+
+// TopTags service definition
+service TopTags {
+    //receives Tag objects from clients
+    rpc TagsRoute(stream Tag) returns (TagsUpdate) {}
+}
+
+// request message to indicate count of a given tag
+message Tag {
+    string tag = 1;
+    int64 count = 2;
+}
+
+// response message indicating updated tag counts
+message TagsUpdate {
+    repeated Tag tags = 1;
+}
